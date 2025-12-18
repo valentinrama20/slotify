@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Slotify By Valentin Rama</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header id="topbar" class="hidden">
+  <div class="logo">Slotify</div>
+  <nav>
+    <button id="navSchedule">Schedule</button>
+    <button id="navCalendar">My Appointments</button>
+    <button id="logout">Logout</button>
+  </nav>
+</header>
+
+<!-- Welcome Screen -->
+
+<section id="welcome" class="screen active">
+  <h1>Schedule meetings effortlessly</h1>
+  <p>Simple scheduling, done right.</p>
+  <button id="startBtn">Schedule a Meeting</button>
+</section>
+
+<!-- Email Screen -->
+
+<section id="email" class="screen">
+  <h2>Enter your email</h2>
+  <input type="email" id="emailInput" placeholder="you@email.com" />
+  <button id="emailBtn">Continue</button>
+  <p class="hint">Demo login (front-end only)</p>
+</section>
+
+<!-- Schedule Screen -->
+<section id="schedule" class="screen">
+  <h2>Schedule a time</h2>
+
+  <label>
+    Select date
+    <input type="date" id="dateInput" />
+  </label>
+
+  <div id="slots" class="slots"></div>
+</section>
+
+<!-- Calendar Screen -->
+
+<section id="calendar" class="screen">
+  <h2>My Appointments</h2>
+  <div id="calendarGrid" class="calendar"></div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
