@@ -51,3 +51,72 @@ button {
 button:hover {
   transform: translateY(-1px);
 }
+
+/* INPUTS */
+input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5f5;
+  font-size: 1rem;
+  width: 260px;
+  margin: 10px 0;
+}
+
+/* TOPBAR */
+header {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 30px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* SCHEDULE */
+label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+/* SLOTS */
+.slots {
+  margin-top: 20px;
+  max-width: 500px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 12px;
+}
+
+.slot {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5f5;
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+.slot:hover {
+  background: #eff6ff;
+}
+
+.slot.booked {
+  background: #e5e7eb;
+  color: #64748b;
+  cursor: not-allowed;
+}
