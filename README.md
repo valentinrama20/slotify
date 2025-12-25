@@ -16,7 +16,7 @@ LinkedIn : https://www.linkedin.com/in/valentin-rama-1268312b0/
 
 # About the Lead Developer
 
-Valentin Rama is a Berea College Computer Science student with a strong focus on front-end web development and UI/UX fundamentals. This project highlights his ability to design structured user flows, manage application state on the client side, and create polished interfaces using only HTML, CSS, and JavaScript. Slotify reflects an emphasis on simplicity, readability, and real-world usability.
+Valentin Rama is a Berea College Computer Science student with a strong focus on front-end web development and UI/UX fundamentals. This project highlights the ability to design structured user flows, manage application state on the client side, and create polished interfaces using only HTML, CSS, and JavaScript. Slotify reflects an emphasis on simplicity, readability, and real-world usability.
 
 # Scope
 
