@@ -14,3 +14,52 @@ function show(screen) {
   screen.classList.add("active");
 }
 
+/* NAV */
+const topbar = document.getElementById("topbar");
+
+document.getElementById("startBtn").onclick = () => {
+  show(email);
+};
+
+document.getElementById("emailBtn").onclick = () => {
+  const emailValue = document.getElementById("emailInput").value.trim();
+  if (!emailValue.includes("@")) return;
+
+  localStorage.setItem(USER_KEY, emailValue);
+  topbar.classList.remove("hidden");
+  show(schedule);
+};
+
+document.getElementById("navSchedule").onclick = () => show(schedule);
+
+document.getElementById("navCalendar").onclick = () => {
+  show(calendar);
+  renderCalendar();
+};
+
+document.getElementById("logout").onclick = () => {
+  localStorage.removeItem(USER_KEY);
+  localStorage.removeItem(BOOKING_KEY);
+  topbar.classList.add("hidden");
+  show(welcome);
+};
+
+/* BOOKINGS */
+
+function getBookings() {
+  const raw = localStorage.getItem(BOOKING_KEY);
+  if (!raw) return [];
+  return raw.split("\n").map(r => {
+    const [date, time] = r.split(",");
+    return { date, time };
+  });
+}
+
+function saveBookings(list) {
+  const data = list.map(b => `${b.date},${b.time}`).join("\n");
+  localStorage.setItem(BOOKING_KEY, data);
+}
+
+function isBooked(date, time) {
+  return getBookings().some(b => b.date === date && b.time === time);
+}
