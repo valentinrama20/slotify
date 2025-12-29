@@ -2,6 +2,7 @@ const USER_KEY = "slotifyUser";
 const BOOKING_KEY = "slotifyBookings";
 
 /* SCREENS */
+
 const welcome = document.getElementById("welcome");
 const email = document.getElementById("email");
 const schedule = document.getElementById("schedule");
@@ -15,6 +16,7 @@ function show(screen) {
 }
 
 /* NAV */
+
 const topbar = document.getElementById("topbar");
 
 document.getElementById("startBtn").onclick = () => {
@@ -62,4 +64,42 @@ function saveBookings(list) {
 
 function isBooked(date, time) {
   return getBookings().some(b => b.date === date && b.time === time);
+}
+
+/* SCHEDULE */
+
+const dateInput = document.getElementById("dateInput");
+const slotsDiv = document.getElementById("slots");
+
+dateInput.addEventListener("change", renderSlots);
+
+function renderSlots() {
+  slotsDiv.innerHTML = "";
+  const date = dateInput.value;
+  if (!date) return;
+
+  for (let h = 9; h < 17; h++) {
+    ["00", "30"].forEach(m => {
+      const time = `${h}:${m}`;
+      const div = document.createElement("div");
+      div.className = "slot";
+      div.textContent = time;
+
+      if (isBooked(date, time)) {
+        div.classList.add("booked");
+      } else {
+        div.onclick = () => book(date, time);
+      }
+
+      slotsDiv.appendChild(div);
+    });
+  }
+}
+
+function book(date, time) {
+  const bookings = getBookings();
+  bookings.push({ date, time });
+  saveBookings(bookings);
+  show(calendar);
+  renderCalendar();
 }
