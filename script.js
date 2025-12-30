@@ -103,3 +103,49 @@ function book(date, time) {
   show(calendar);
   renderCalendar();
 }
+
+/* CALENDAR */
+
+function renderCalendar() {
+  const container = document.getElementById("calendarGrid");
+  container.innerHTML = "";
+
+  const bookings = getBookings();
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+    const dayDiv = document.createElement("div");
+    dayDiv.className = "day";
+    dayDiv.innerHTML = `<strong>${d}</strong>`;
+
+    bookings
+      .filter(b => b.date === dateStr)
+      .forEach(b => {
+        const appt = document.createElement("div");
+        appt.className = "appointment";
+        appt.textContent = b.time;
+
+        appt.onclick = () => {
+          if (!confirm("Delete this appointment?")) return;
+          const updated = getBookings().filter(
+            x => !(x.date === b.date && x.time === b.time)
+          );
+          saveBookings(updated);
+          renderCalendar();
+        };
+
+        dayDiv.appendChild(appt);
+      });
+
+    container.appendChild(dayDiv);
+  }
+}
+
+/* INITIAL STATE */
+
+topbar.classList.add("hidden");
+show(welcome);
